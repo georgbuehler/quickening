@@ -88,5 +88,8 @@
     <Build Include="dbo\Stored Procedures\sp_WriteAccountType.sql" />
     <Build Include="dbo\Stored Procedures\sp_WriteSecurity.sql" />
     <Build Include="dbo\User Defined Types\AssetClassAllocationType.sql" />
+    <Build Include="dbo\Stored Procedures\sp_WriteTaxLineItem.sql" />
+    <Build Include="dbo\Stored Procedures\sp_WriteTag.sql" />
+    <Build Include="dbo\Stored Procedures\sp_WriteAccount.sql" />
   </ItemGroup>
 </Project>
