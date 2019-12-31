@@ -19,8 +19,6 @@
     [ParentAccountId]           UNIQUEIDENTIFIER NULL,
     [SecurityId]                UNIQUEIDENTIFIER NULL,
     [TaxLineItemId]             UNIQUEIDENTIFIER NULL,
-    [EnteredDateTime] DATETIME NOT NULL DEFAULT getdate(), 
-    [LastModifiedDateTime] DATETIME NOT NULL DEFAULT getdate(), 
     CONSTRAINT [PK_Account] PRIMARY KEY CLUSTERED ([AccountId] ASC),
     CONSTRAINT [FK_Account_Account] FOREIGN KEY ([ParentAccountId]) REFERENCES [dbo].[Account] ([AccountId]),
     CONSTRAINT [FK_Account_AccountGroup] FOREIGN KEY ([AccountGroupId]) REFERENCES [dbo].[AccountGroup] ([AccountGroupId]),
@@ -29,13 +27,3 @@
     CONSTRAINT [FK_Account_TaxLineItem] FOREIGN KEY ([TaxLineItemId]) REFERENCES [dbo].[TaxLineItem] ([TaxLineItemId])
 );
 
-
-GO
-
-CREATE TRIGGER [dbo].[tru_Account_UpdateLastModified]
-    ON [dbo].[Account]
-    AFTER UPDATE
-    AS
-    UPDATE dbo.Account
-    SET LastModifiedDateTime = GETDATE()
-    WHERE AccountId IN (SELECT DISTINCT AccountId FROM Inserted)

@@ -13,7 +13,7 @@
 
 
 GO
-CREATE TRIGGER tru_TransactionHeader_UpdateLastModified
+CREATE TRIGGER tru_UpdateLastModified
 ON dbo.TransactionHeader
 AFTER UPDATE
 AS
